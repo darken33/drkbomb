@@ -44,8 +44,8 @@ function fillHighscoreLocHtml(passe, duree, score) {
 			   tabscores[i].score == score && !hlgt) ? "hlg" : "");
 		if (cl == "hlg") hlgt = true;	   
 		if (tabscores[i].name == "-" &&
-			   tabscores[i].passe == 9999 &&
-			   tabscores[i].time == "999:59" &&
+			   tabscores[i].passe == 0 &&
+			   tabscores[i].time == "0:00" &&
 			   tabscores[i].score == 0) {
 			tableScore += '<tr><td style="text-align: right;" class="'+cl+'">'+(i+1)+'.</td>' +
 					'<td style="text-align: left;" class="'+cl+'">-</td>' +

@@ -1,4 +1,4 @@
-drkBomb v1.0
+drkBomb v1.0.1
 Passe La bombe à ton voisin
 ------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ Les graphismes ont été pour certains réalisé par Emmy Carrière (8 ans et
 demi) et Philippe Bousquet (plus vieux), les autres proviennent 
 d’OpenClipart.org et sont distribuées sous licence Creative Commons BY-SA.
 
-Les effets sonnores ont quant à eux été trouvé sur SoundBible.com et sont 
+Les effets sonores ont quant à eux été trouvé sur SoundBible.com et sont 
 également distribuées sous licence Creative Commons BY-SA.
 
 Comment jouer ?
@@ -29,10 +29,10 @@ le niveau de jeu dans les paramètres.
 Pour initialiser une partie, appuyez sur le bouton « GO » il faut alors 
 maintenir le bouton jaune enfoncé pour démarrer le jeu.
 
-Au bout de 10 seconde l’autre bouton devient jaune, il faut alors relacher 
-le premier bouton et dans un délai de 1 seconde appuyer sur ce second 
+Au bout de 10 seconde l’autre bouton devient jaune, il faut alors relâcher 
+le premier bouton et dans un délai de 2 secondes appuyer sur ce second 
 bouton. Si cette action n’est pas fait au bout de 5 secondes, la bombe 
-explose. Il faut alors répétez l’opération.
+explose. Il faut alors répétez l'opération.
 
 Attention, évitez de secouer le téléphone, d’appuyer trop tôt ou relâcher 
 trop tard un bouton, sinon la bombe explose et la partie est terminée.
@@ -62,6 +62,10 @@ vous béneficiez des quatre libertés fondamentales :
 
 Changelog
 ---------
+v1.0.1 : 
+  - Changement d'évènement sur le bouton GO (bug sur smartphone wikio)
+  - Correction de fautes d'orthographes
+  
 v1.0 : 
   - Première version de drkSlide
   

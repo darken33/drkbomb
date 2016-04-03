@@ -7,7 +7,7 @@
  * 
  * This software is under GNU General Public License
  */
-var game_version  = "1.0";
+var game_version  = "1.0.1";
 var ready = false;
 var popclosed = false;
 var started = false;
@@ -568,7 +568,7 @@ function popup() {
 		popup = '<div data-role="popup" id="splash" class="popup" data-short="Comment Jouer ?" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15" style="background: #a0a0a0;">' + closebtn + header +
 				'<div data-role="content" style="text-align: justify; background: #a0a0a0; color: #000000; text-shadow: none; font-weight: normal; font-size: 85%;">' +
 					'<strong>"menu"</strong> : affiche le menu du jeu (jouer, options, aide, quitter).<br/>'+
-					'<strong>"GO"</strong> : demarre la partie.<br/>'+ 
+					'<strong>"GO"</strong> : d&eacute;marre la partie.<br/>'+ 
 					'<strong>"Le jeu"</strong> : maintenez le bouton clignotant, sans secouer le smartphone.<br/>'+
 					'Bonne partie...' +
 				'</div>' +	
@@ -579,7 +579,7 @@ function popup() {
 				'<div data-role="content" style="text-align: justify; background: #a0a0a0; color: #000000; text-shadow: none; font-weight: normal; font-size: 90%;">' +
 					'La touche <strong>"menu"</strong>, ou un appui long sur l\'&eacute;cran de votre t&eacute;l&eacute;phone permet d\'afficher le menu du jeu (jouer, options, aide, quitter).<br/>'+
 					'Le bouton <strong>"GO"</strong> permet d\'initialiser le jeu, il commence lorsque vous appuyez sur le bouton clignotant.<br/>'+ 
-					'Chaque fois qu\'un bouton clignote, vous devez relacher le bouton enfonc&eacute;, et rapidement l\'autre joueur (ou vous, si vous &ecirc;tes seul) doit appueyr sur le bouton clignotant.<br/>'+
+					'Chaque fois qu\'un bouton clignote, vous devez rel&acirc;cher le bouton enfonc&eacute;, et rapidement l\'autre joueur (ou vous, si vous &ecirc;tes seul) doit appuyer sur le bouton clignotant.<br/>'+
 					'Attention, &eacute;vitez de secouer le t&eacute;l&eacute;phone, d\'appuyer trop t&ocirc;t ou rel&acirc;cher trop tard un bouton, sinon la bombe explose et la partie est termin&eacute;e.<br/>'+ 
 					'Bonne partie...' +
 				'</div>' +	
