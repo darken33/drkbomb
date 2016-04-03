@@ -1,0 +1,770 @@
+body {
+	margin:0; 
+	padding:0; 
+	text-align: center; 
+	background: #000000; /*383838;*/ 
+	color: #000000;
+	font-weight: bold;
+	font-size: 100%;
+	text-shadow: 1px 1px #000000;
+	font-family: Arial, sans-serif;
+}
+.ui-mobile, .ui-mobile .ui-page {
+    min-height: 0;
+	font-weight: bold;
+	font-size: 100%;
+	text-shadow: 1px 1px #000000;
+}
+.popup {
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    right: 5%;
+    bottom: 10%;
+}
+.text-title {
+	font-family: Times, serif;
+	color: #ff00ff;
+	font-size: 40pt;
+}
+.text-subtitle {
+	font-size: 10pt; 
+	color: #FFFFFF;
+}
+.text-title-2 {
+	font-family: Times, serif;
+	color: #ff00ff;
+	font-size: 40pt;
+}
+.highscore-title {
+	font-size: 12pt; 
+	color: #FFFFFF;
+	margin-bottom: 5%;
+}
+.button-go {
+	margin: auto;
+	width: 100px; 
+	height: 36px; 
+}
+#loading {
+	background: #000000; 
+	color: #FFFFFF; 
+	position: fixed; 
+	top: 0; 
+	bottom: 0; 
+	left: 0; 
+	right: 0;
+	background-image:url('../images/ajax-loader.gif');
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+}
+.white {
+	color: #FFFFFF; 
+}
+#game, #ingame, #score, #hsc_local, #hsc_internet {
+	background: #FFA000;  
+	background-image:url('../images/fond_ecran.jpg');
+	background-attachment:fixed; 
+	background-position: 0% 50%;
+	background-repeat:no-repeat;
+}
+#broken_screen {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #000000;  
+	background-image:url('../images/fond_ecran_brise.jpg');
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+	z-index: 500;
+}
+#bomb, #bomb2 {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image:url('../images/bombe.png');
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+}
+#explode {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+}
+.anim {
+	background-image:url('../images/explode_anim.png');
+}
+.ingame {
+	display: none;
+}
+.player1 {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: auto;
+	height: 25%;
+	background-image:url('../images/btn_player1.png');
+	background-position: 50% 50%;
+	background-repeat:no-repeat;	
+}
+.player1_down {
+	background-image:url('../images/btn_player1_down.png');
+}
+.player2 {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: auto;
+	left: 0;
+	height: 25%;
+	background-image:url('../images/btn_player2.png');
+	background-position: 50% 50%;
+	background-repeat:no-repeat;	
+}
+.player2_down {
+	background-image:url('../images/btn_player2_down.png');
+}
+.highlight {
+	background-image:url('../images/btn_highlight.png');
+}
+table { 
+	margin: auto; 
+	border: none;
+}
+table.highscore {
+	width: 90%; 
+	color: #555555;
+	background: none;
+	text-shadow: 1px 1px #000000;
+}
+table.highscore th {
+	color: #ff00ff;
+}
+tr { 
+	padding: 0; 
+	margin: 0;
+}
+
+td {
+	border:none; 
+	background: #000;
+	padding:0; 
+	margin:0;
+}
+.hlg {
+	color: #FFFFFF;
+}
+table.highscore td {
+	background: none;
+}
+
+.icons {
+	background-image:url('../images/icons-36-white.png');
+	background-repeat:no-repeat;
+}
+.icons-black {
+	background-image:url('../images/icons-36-black.png');
+	background-repeat:no-repeat;
+}
+.icons-size {
+	width: 36px;
+	height: 36px;
+	margin: auto;
+}
+.param {
+	background-position: -576px;
+}
+.quit {
+	background-position: -144px;
+} 
+.help {
+	background-position: -1080px;
+} 
+.new {
+	background-position: -936px;
+} 
+.right {
+	background-position: -216px;
+} 
+.left {
+	background-position: -288px;
+} 
+.menu {
+	height: 80px;
+	font-family: arial;
+	font-size: 10pt;
+	font-weight: normal;
+	color: #FFF;
+}
+.help-content {
+	text-align: left; 
+	padding-top: 60px;
+}
+.help-title {
+	position: fixed; 
+	width: 100%; 
+	top: 0; 
+	padding: 0.5em; 
+	border-bottom: 1px #282828 solid; 
+	background: #000;	
+	color: #ff00ff; 
+	font-weight: bold; 
+	font-size: 100%; 
+	text-shadow: 1px 1px #000000;
+}
+.help-subtitle {
+	font-size: 8pt; 
+	color: #fff;
+}
+.help-text {
+	font-weight: normal; 
+	font-size: 10pt; 
+	text-shadow: none; 
+	text-align: justify; 
+	padding: 0.5em;
+}
+/* CSS mode DESKTOP */
+@media only screen and (min-width: 1025px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size: 1900px 3380px;
+	}
+	#broken_screen {
+		background-size: 1900px 3380px;
+	}
+	#bomb, #bomb2 {
+		background-size: 640px 640px;
+	}
+	.im10 {
+		background-size: 640px 640px;
+	}
+	.im09 {
+		background-size: 576px 576px;
+	}
+	.im08 {
+		background-size: 512px 512px;
+	}
+	.im07 {
+		background-size: 448px 448px;
+	}
+	.im06 {
+		background-size: 384px 384px;
+	}
+	.im05 {
+		background-size: 320px 320px;
+	}
+	.im04 {
+		background-size: 256px 256px;
+	}
+	.im03 {
+		background-size: 192px 192px;
+	}
+	.im02 {
+		background-size: 128px 128px;
+	}
+	.im01 {
+		background-size: 64px 64px;
+	}
+	.player1 {
+		background-size: 204px 204px;
+	}
+	.player2 {
+		background-size: 204px 204px;
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 150%; 
+	}
+	.text-title {
+		font-size: 80pt;
+	}
+	.text-subtitle {
+		font-size: 20pt; 
+		color: #FFFFFF;
+	}
+	.text-title-2 {
+		font-size: 80pt;
+	}
+	.highscore-title {
+		font-size: 20pt; 
+	}
+	.help-content {
+		padding-top: 100px;	
+	}
+	.help-title {
+		font-size: 20pt; 
+	}
+	.help-subtitle {
+		font-size: 15pt; 
+	}
+}
+@media only screen and (max-width: 1024px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size: 1024px 1820px;
+	}
+	#broken_screen {
+		background-size: 1024px 1820px;
+	}
+	#bomb, #bomb2 {
+		background-size: 640px 640px;
+	}
+	.im10 {
+		background-size: 640px 640px;
+	}
+	.im09 {
+		background-size: 576px 576px;
+	}
+	.im08 {
+		background-size: 512px 512px;
+	}
+	.im07 {
+		background-size: 448px 448px;
+	}
+	.im06 {
+		background-size: 384px 384px;
+	}
+	.im05 {
+		background-size: 320px 320px;
+	}
+	.im04 {
+		background-size: 256px 256px;
+	}
+	.im03 {
+		background-size: 192px 192px;
+	}
+	.im02 {
+		background-size: 128px 128px;
+	}
+	.im01 {
+		background-size: 64px 64px;
+	}
+	.player1 {
+		background-size: 204px 204px;
+	}
+	.player2 {
+		background-size: 204px 204px;
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 150%; 
+	}
+	.highscore-title {
+		font-size: 20pt; 
+	}
+	.help-content {
+		padding-top: 100px;	
+	}
+	.help-title {
+		font-size: 20pt; 
+	}
+	.help-subtitle {
+		font-size: 15pt; 
+	}
+	.help-text {
+		font-size: 150%; 
+	}
+}
+				
+@media only screen and (max-width: 800px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size: 800px 1425px;
+	}
+	#broken_screen {
+		background-size: 800px 1425px;
+	}
+	#bomb, #bomb2 {
+		background-size: 500px 500px;
+	}
+	.im10 {
+		background-size: 500px 500px;
+	}
+	.im09 {
+		background-size: 450px 450px;
+	}
+	.im08 {
+		background-size: 400px 400px;
+	}
+	.im07 {
+		background-size: 350px 350px;
+	}
+	.im06 {
+		background-size: 300px 300px;
+	}
+	.im05 {
+		background-size: 250px 250px;
+	}
+	.im04 {
+		background-size: 200px 200px;
+	}
+	.im03 {
+		background-size: 150px 150px;
+	}
+	.im02 {
+		background-size: 100px 100px;
+	}
+	.im01 {
+		background-size: 50px 50px;
+	}
+	.player1 {
+		background-size: 160px 160px;
+	}
+	.player2 {
+		background-size: 160px 160px;
+	}
+	.text-title {
+		font-size: 60pt;
+	}
+	.text-subtitle {
+		font-size: 15pt; 
+		color: #FFFFFF;
+	}
+	.text-title-2 {
+		font-size: 60pt;
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 105%; 
+	}
+	.highscore-title {
+		font-size: 15pt; 
+	}
+	.help-content {
+		padding-top: 100px;	
+	}
+	.help-title {
+		font-size: 14pt; 
+	}
+	.help-subtitle {
+		font-size: 10pt; 
+	}
+	.help-text {
+		font-size: 105%; 
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size:  640px 1140px;
+	}
+	#broken_screen {
+		background-size:  640px 1140px;
+	}
+	#bomb, #bomb2 {
+		background-size: 400px 400px;
+	}
+	.im10 {
+		background-size: 400px 400px;
+	}
+	.im09 {
+		background-size: 360px 360px;
+	}
+	.im08 {
+		background-size: 320px 320px;
+	}
+	.im07 {
+		background-size: 280px 280px;
+	}
+	.im06 {
+		background-size: 240px 240px;
+	}
+	.im05 {
+		background-size: 200px 200px;
+	}
+	.im04 {
+		background-size: 160px 160px;
+	}
+	.im03 {
+		background-size: 120px 120px;
+	}
+	.im02 {
+		background-size: 80px 80px;
+	}
+	.im01 {
+		background-size: 40px 40px;
+	}
+	.player1 {
+		background-size: 128px 128px;
+	}
+	.player2 {
+		background-size: 128px 128px;
+	}
+	.text-title {
+		font-size: 50pt;
+	}
+	.text-subtitle {
+		font-size: 12pt; 
+		color: #FFFFFF;
+	}
+	.help-text {
+		font-size: 100%; 
+	}
+	.text-title-2 {
+		font-size: 50pt;
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 100%; 
+	}
+	.highscore-title {
+		font-size: 12pt; 
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size: 480px 855px;
+	}
+	#broken_screen {
+		background-size: 480px 855px;
+	}
+	#bomb, #bomb2 {
+		background-size: 300px 300px;
+	}
+	#explode, #explode2 {
+		background-size: 300px 300px;
+	}
+	.im10 {
+		background-size: 300px 300px;
+	}
+	.im09 {
+		background-size: 270px 270px;
+	}
+	.im08 {
+		background-size: 240px 240px;
+	}
+	.im07 {
+		background-size: 210px 210px;
+	}
+	.im06 {
+		background-size: 180px 180px;
+	}
+	.im05 {
+		background-size: 150px 150px;
+	}
+	.im04 {
+		background-size: 120px 120px;
+	}
+	.im03 {
+		background-size: 90px 90px;
+	}
+	.im02 {
+		background-size: 60px 60px;
+	}
+	.im01 {
+		background-size: 30px 30px;
+	}
+	.player1 {
+		background-size: 96px 96px;
+	}
+	.player2 {
+		background-size: 96px 96px;
+	}
+	.help-title {
+		font-size: 12pt; 
+	}
+	.help-subtitle {
+		font-size: 9pt; 
+	}
+	.help-text {
+		font-size: 90%; 
+	}
+	.menu {
+		height: 64px;
+		font-family: arial;
+		font-size: 8pt;
+		font-weight: normal;
+		color: #FFF;
+	}
+	.help-content {
+		padding-top: 50px;	
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 90%; 
+	}
+}
+				
+@media only screen and (max-width: 360px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size: 360px 640px;
+	}
+	#broken_screen {
+		background-size: 360px 640px;
+	}
+	#bomb, #bomb2 {
+		background-size: 225px 225px;
+	}
+	.im10 {
+		background-size: 225px 225px;
+	}
+	.im09 {
+		background-size: 202.5px 202.5px;
+	}
+	.im08 {
+		background-size: 180px 180px;
+	}
+	.im07 {
+		background-size: 157.5px 157.5px;
+	}
+	.im06 {
+		background-size: 135px 135px;
+	}
+	.im05 {
+		background-size: 112.5px 112.5px;
+	}
+	.im04 {
+		background-size: 90px 90px;
+	}
+	.im03 {
+		background-size: 67.5px 67.5px;
+	}
+	.im02 {
+		background-size: 45px 45px;
+	}
+	.im01 {
+		background-size: 22.5px 22.5px;
+	}
+	.player1 {
+		background-size: 72px 72px;
+	}
+	.player2 {
+		background-size: 72px 72px;
+	}
+	.text-title {
+		font-size: 30pt;
+	}
+	.text-subtitle {
+		font-size: 10pt; 
+		color: #FFFFFF;
+	}
+	.help-title {
+		font-size: 12pt; 
+	}
+	.help-subtitle {
+		font-size: 8pt; 
+	}
+	.help-text {
+		font-size: 80%; 
+	}
+	.text-title-2 {
+		font-size: 30pt;
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 80%; 
+	}
+	.highscore-title {
+		font-size: 10pt; 
+	}
+}
+				
+@media only screen and (max-width: 240px) {
+	#game, #ingame, #score, #hsc_local, #hsc_internet {
+		background-size: 240px 426px;
+	}
+	#broken_screen {
+		background-size: 240px 426px;
+	}
+	#bomb, #bomb2 {
+		background-size: 150px 150px;
+	}
+	#explode, #explode2 {
+		background-size: 150px 150px;
+	}
+	.im10 {
+		background-size: 150px 150px;
+	}
+	.im09 {
+		background-size: 135px 135px;
+	}
+	.im08 {
+		background-size: 120px 120px;
+	}
+	.im07 {
+		background-size: 105px 105px;
+	}
+	.im06 {
+		background-size: 90px 90px;
+	}
+	.im05 {
+		background-size: 75px 75px;
+	}
+	.im04 {
+		background-size: 60px 60px;
+	}
+	.im03 {
+		background-size: 45px 45px;
+	}
+	.im02 {
+		background-size: 30px 30px;
+	}
+	.im01 {
+		background-size: 15px 15px;
+	}
+	.player1 {
+		background-size: 48px 48px;
+	}
+	.player2 {
+		background-size: 48px 48px;
+	}
+	.menu {
+		height: 40px;
+		font-family: arial;
+		font-size: 8pt;
+		font-weight: normal;
+		color: #FFF;
+	}
+	.text-title {
+		font-size: 20pt;
+	}
+	.text-subtitle {
+		font-size: 8pt; 
+		color: #FFFFFF;
+	}
+	.help-subtitle {
+		font-size: 7pt; 
+	}
+	.help-text {
+		font-size: 70%; 
+	}
+	.text-title-2 {
+		font-size: 20pt;
+	}
+	#hsc_loc, #hsc_int {
+		font-size: 70%; 
+	}
+	.highscore-title {
+		font-size: 7pt; 
+	}
+	.icons {
+		background-image:url('../images/icons-18-white.png');
+	}
+	.icons-black {
+		background-image:url('../images/icons-18-black.png');
+	}
+	.icons-size {
+		width: 18px;
+		height: 18px;
+		margin: auto;
+	}
+	.param {
+		background-position: -288px;
+	} 
+	.quit {
+		background-position: -72px;
+	} 
+	.help {
+		background-position: -540px;
+	} 
+	.new {
+		background-position: -468px;
+	} 
+	.right {
+		background-position: -108px;
+	} 
+	.left {
+		background-position: -144px;
+	} 
+}
