@@ -33,8 +33,8 @@ function updateHighscore(passe, duree, score) {
 }
 
 function fillHighscoreLocHtml(passe, duree, score) {
-	document.getElementById("hst_loc").innerHTML = "Meilleurs Scores : " + (game_options.difficulty == 1 ? "Facile" : (game_options.difficulty == 2 ? "Moyen" : "Difficile"));
-	var tableScore = "<tr><th>#</th><th>Nom</th><th>Passes</th><th>Temps</th><th>Score</th></tr>";
+	document.getElementById("hst_loc").innerHTML = texte_meilleur_score_local[game_options.lang] + (game_options.difficulty == 1 ? texte_difficulte_facile[game_options.lang] : (game_options.difficulty == 2 ? texte_difficulte_moyen[game_options.lang] : texte_difficulte_difficile[game_options.lang]));
+	var tableScore = "<tr><th>#</th><th>"+texte_hsc_nom[game_options.lang]+"</th><th>"+texte_hsc_passes[game_options.lang]+"</th><th>"+texte_hsc_temps[game_options.lang]+"</th><th>"+texte_hsc_score[game_options.lang]+"</th></tr>";
 	var tabscores = (game_options.difficulty == 1 ? game_highscores.facile : (game_options.difficulty == 2 ? game_highscores.moyen : game_highscores.difficile));
 	var hlgt = false;
 	for (i=0; i<10; i++) {
@@ -97,14 +97,14 @@ function service(passes, duree, score) {
 	$.getJSON(url, function(data) {
 		fillHighscoreIntHtml(data);
 	}).fail(function() { 
-		var tableScore = '<tr><td style="color: #FF0000">Impossible de charger les scores<br/>V&eacute;rifiez votre connexion Internet...</td></tr>';
+		var tableScore = '<tr><td style="color: #FF0000">'+texte_erreur_chargement_score[game_options.lang]+'</td></tr>';
 		document.getElementById("hsc_int").innerHTML = tableScore;
 	});
 }		
 
 function fillHighscoreIntHtml(data) {
-	document.getElementById("hst_int").innerHTML = "Meilleurs Scores Mondiaux : " + (game_options.difficulty == 1 ? "Facile" : (game_options.difficulty == 2 ? "Moyen" : "Difficile"));
-	var tableScore = "<tr><th>#</th><th>Nom</th><th>Passes</th><th>Temps</th><th>Score</th></tr>";
+	document.getElementById("hst_int").innerHTML = texte_meilleur_score_mondial[game_options.lang] + (game_options.difficulty == 1 ? texte_difficulte_facile[game_options.lang] : (game_options.difficulty == 2 ? texte_difficulte_moyen[game_options.lang] : texte_difficulte_difficile[game_options.lang]));
+	var tableScore = "<tr><th>#</th><th>"+texte_hsc_nom[game_options.lang]+"</th><th>"+texte_hsc_passes[game_options.lang]+"</th><th>"+texte_hsc_temps[game_options.lang]+"</th><th>"+texte_hsc_score[game_options.lang]+"</th></tr>";
 	var tabscores = data;
 	for (i=0; i<10; i++) {
 		if (i < tabscores.length) {

@@ -1,4 +1,4 @@
-drkBomb v1.0.3
+drkBomb v1.1
 Passe La bombe à ton voisin
 ------------------------------------------------------------------------
 
@@ -23,8 +23,7 @@ Les effets sonores ont quant à eux été trouvés sur SoundBible.com et sont
 Comment jouer ?
 ---------------
 Pour faire apparaître le menu il suffit d’appuyer sur la touche « menu », 
-ou simplement effectuer un appui long sur l’écran, vous pourrez définir 
-le niveau de jeu dans les paramètres.
+vous pourrez alors définir le niveau de jeu dans les paramètres.
 
 Pour initialiser une partie, appuyez sur le bouton « GO » il faut alors 
 maintenir le bouton jaune enfoncé pour démarrer le jeu.
@@ -62,6 +61,9 @@ vous béneficiez des quatre libertés fondamentales :
 
 Changelog
 ---------
+v1.1: 
+  - Internationnalisation de drkBomb (langues : Français et Anglais)
+
 v1.0.3 : 
   - Ajout d'un bouton menu pour les appareils ne disposant pas de bouton
 	physique.

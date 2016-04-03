@@ -233,10 +233,11 @@ function playExplodeAnim() {
  */ 
 function score() {
 	if (!$("score").is(':visible')) {
+		$("#txt_score").html(texte_hsc_score[game_options.lang]);
 		var int_sc = nb_games * getChrono();
 		int_sc *= (game_options.difficulty == 1 ? 100 : (game_options.difficulty == 2 ? 1000 : 10000));
-		var str_sc = "Passes : " + nb_games +"<br/>";
-		str_sc += "Temps : " + getChronoString() +"<br/>";
+		var str_sc = texte_hsc_passes[game_options.lang]+" : " + nb_games +"<br/>";
+		str_sc += texte_hsc_temps[game_options.lang]+" : " + getChronoString() +"<br/>";
 		$("#scr").html(int_sc);
 		$("#scr_detail").html(str_sc);
 		updateHighscore(nb_games, getChronoString(), int_sc);
@@ -337,15 +338,16 @@ function quit() {
 	if ($("#menu").is(':visible')) {
 		$("#menu").hide();
 	}
-	if (confirm("Voulez vous quitter jeu ?")) {
+	if (confirm(texte_alert_quitter[game_options.lang])) {
 		navigator.app.exitApp();
 	}
 }
-
 /**
  * aide() - afficher la page d'aide
  */ 
 function aide() {
+	$("#help_subtitle").html(texte_sous_titre[game_options.lang]);
+	$("#help_content").html(texte_aide_content[game_options.lang]);
 	$.mobile.changePage('#aide-1', 'none', true, true);
 }
 
@@ -353,27 +355,53 @@ function aide() {
  * param() - afficher la page des paramètres
  */ 
 function param() {
-	game_diff = '<option value="1" '+(game_options.difficulty == 1 ? 'selected="selected"' : '')+'>Facile</option>';
-	game_diff += '<option value="2" '+(game_options.difficulty == 2 ? 'selected="selected"' : '')+'>Moyen</option>';
-	game_diff += '<option value="3" '+(game_options.difficulty == 3 ? 'selected="selected"' : '')+'>Difficile</option>';
-	$('#game_level').html(game_diff);
+	$('#txt_param').html(texte_param_title[game_options.lang]);
+	game_lang = '<option value="fr" '+(game_options.lang == "fr" ? 'selected="selected"' : '')+'>'+texte_option_langue_fr[game_options.lang]+'</option>';
+	game_lang += '<option value="en" '+(game_options.lang == "en" ? 'selected="selected"' : '')+'>'+texte_option_langue_en[game_options.lang]+'</option>';
+	$('#l_game_lang').html(texte_option_langage[game_options.lang]);
+	$('#game_lang').html(game_lang).selectmenu().selectmenu("refresh");
+	game_diff = '<option value="1" '+(game_options.difficulty == 1 ? 'selected="selected"' : '')+'>'+texte_difficulte_facile[game_options.lang]+'</option>';
+	game_diff += '<option value="2" '+(game_options.difficulty == 2 ? 'selected="selected"' : '')+'>'+texte_difficulte_moyen[game_options.lang]+'</option>';
+	game_diff += '<option value="3" '+(game_options.difficulty == 3 ? 'selected="selected"' : '')+'>'+texte_difficulte_difficile[game_options.lang]+'</option>';
+	$('#l_game_level').html(texte_niveau[game_options.lang]);
+	$('#game_level').html(game_diff).selectmenu().selectmenu("refresh");
+	$('#l_game_team').html(texte_equipe[game_options.lang]);
 	$('#game_team').val(game_options.teamname);
-	if (game_options.helponstart) $('#game_help').attr('checked', "checked");
-	if (game_options.soundactive) $('#game_sound').attr('checked', "checked");
-	if (game_options.sharescore) $('#game_score').attr('checked', "checked");
+	$('#l_options').html(texte_options[game_options.lang]);
+	$('#l_game_help').html(texte_option_aide[game_options.lang]);
+	$('#l_game_sound').html(texte_option_sons[game_options.lang]);
+	$('#l_game_score').html(texte_option_share[game_options.lang]);
+	if (game_options.helponstart) $('#game_help').attr('checked', true);
+	if (game_options.soundactive) $('#game_sound').attr('checked', true);
+	if (game_options.sharescore) $('#game_score').attr('checked', true);
+	$('#game_sound').checkboxradio().checkboxradio("refresh");
+	$('#game_help').checkboxradio().checkboxradio("refresh");
+	$('#game_score').checkboxradio().checkboxradio("refresh");
 	$.mobile.changePage('#param-1', 'none', true, true);
+}
+function loading() {
+	$.mobile.changePage('#loading', 'none', true, true);
 }
 
 /**
  * updateparam() - MAJ des paramètres
  */ 
 function updateParam() {
+	game_options.lang = $('#game_lang').val();
 	game_options.difficulty = $('#game_level').val();
 	game_options.teamname = $('#game_team').val(); 
 	game_options.helponstart = ($('#game_help').attr('checked') == "checked");
 	game_options.soundactive = ($('#game_sound').attr('checked') == "checked");
 	game_options.sharescore = ($('#game_score').attr('checked') == "checked");
 	writeOptions();
+	updateMenu();
+}
+
+function updateMenu() {
+	$('#m_txt_jouer').html(texte_menu_jouer[game_options.lang]);
+	$('#m_txt_param').html(texte_menu_param[game_options.lang]);
+	$('#m_txt_aide').html(texte_menu_aide[game_options.lang]);
+	$('#m_txt_quitter').html(texte_menu_quitter[game_options.lang]);
 }
 
 /**
@@ -438,7 +466,6 @@ function bindInGame() {
 		event.stopPropagation();
 		player2Up();
 	});
-	player1Blink();
 }
 
 /**
@@ -498,6 +525,7 @@ var onDeviceReady = function() {
 			initOptions();
 			initHighscores();	
 		}
+		updateMenu();
 		$.mobile.changePage('#game', 'none', true, true);
 		bindGame();	
 		bindMenu();
@@ -522,41 +550,23 @@ function closepop() {
 }
 
 function popup() {
-	header = '<div data-role="header"><h2>Aide</h2></div>',
+	header = '<div data-role="header"><h2>'+texte_aide_title[game_options.lang]+'</h2></div>',
 	closebtn = "",
 	popup = '';
 	if ($(window).width() < 320) {
 		popup = '<div data-role="popup" id="splash" class="popup" data-short="Comment Jouer ?" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15" style="background: #a0a0a0;">' + closebtn + header +
-				'<div data-role="content" style="text-align: justify; background: #a0a0a0; color: #000000; text-shadow: none; font-weight: normal; font-size: 85%;">' +
-					'<strong>"menu"</strong> : affiche le menu du jeu (jouer, options, aide, quitter).<br/>'+
-					'<strong>"GO"</strong> : d&eacute;marre la partie.<br/>'+ 
-					'<strong>"Le jeu"</strong> : maintenez le bouton clignotant, sans secouer le smartphone.<br/>'+
-					'Bonne partie...' +
-				'</div>' +	
-		'</div>';
+				texte_popup_mini[game_options.lang] + 
+				'</div>';
 	}
 	else if ($(window).width() < 480) {
 		popup = '<div data-role="popup" id="splash" class="popup" data-short="Comment Jouer ?" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15" style="background: #a0a0a0;">' + closebtn + header +
-				'<div data-role="content" style="text-align: justify; background: #a0a0a0; color: #000000; text-shadow: none; font-weight: normal; font-size: 90%;">' +
-					'La touche <strong>"menu"</strong>, ou un appui long sur l\'&eacute;cran de votre t&eacute;l&eacute;phone permet d\'afficher le menu du jeu (jouer, options, aide, quitter).<br/>'+
-					'Le bouton <strong>"GO"</strong> permet d\'initialiser le jeu, il commence lorsque vous appuyez sur le bouton clignotant.<br/>'+ 
-					'Chaque fois qu\'un bouton clignote, vous devez rel&acirc;cher le bouton enfonc&eacute;, et rapidement l\'autre joueur (ou vous, si vous &ecirc;tes seul) doit appuyer sur le bouton clignotant.<br/>'+
-					'Attention, &eacute;vitez de secouer le t&eacute;l&eacute;phone, d\'appuyer trop t&ocirc;t ou rel&acirc;cher trop tard un bouton, sinon la bombe explose et la partie est termin&eacute;e.<br/>'+ 
-					'Bonne partie...' +
-				'</div>' +	
-		'</div>';
+				texte_popup_normal[game_options.lang] + 
+				'</div>';
 	}
 	else {
 		popup = '<div data-role="popup" id="splash" class="popup" data-short="Comment Jouer ?" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15" style="background: #a0a0a0; top: 30%; bottom: 30%; left: 15%; right: 15%;">' + closebtn + header +
-				'<div data-role="content" style="text-align: justify; background: #a0a0a0; color: #000000; text-shadow: none; font-weight: normal;">' +
-				'<strong>Comment jouer ?</strong><br/>' +
-				'Pour faire appara&icirc;tre le menu il suffit d\'appuyer sur la touche <strong>"menu"</strong>, ou simplement effectuer un appui long sur l\'&eacute;cran, vous pourrez d&eacute;finir le niveau de jeu dans les param&egrave;tres.<br/>' +
-				'Pour initialiser une partie, appuyez sur le bouton <strong>"GO"</strong> il faut alors maintenir le bouton jaune enfonc&eacute; pour d&eacute;marrer le jeu.<br/>' +
-				'Au bout de 10 secondes l\'autre bouton devient clignote,  il faut alors relacher le premier bouton et dans un d&eacute;lai de 2 secondes appuyer sur ce second bouton. Si cette action n\'est pas faite au bout de 4 secondes, la bombe explose. R&eacute;p&eacute;tez alors l\'op&eacute;ration.<br/>' +
-				'Attention, &eacute;vitez de secouer le t&eacute;l&eacute;phone, d\'appuyer trop t&ocirc;t ou rel&acirc;cher trop tard un bouton, sinon la bombe explose et la partie est termin&eacute;e.<br/>' +
-				'Bonne partie...' +
-				'</div>' +	
-		'</div>';	
+				texte_popup_grand[game_options.lang] + 
+				'</div>';	
 	}
 
 	// Create the popup. Trigger "pagecreate" instead of "create" because currently the framework doesn't bind the enhancement of toolbars to the "create" event (js/widgets/page.sections.js).
