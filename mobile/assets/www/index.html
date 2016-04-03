@@ -50,7 +50,10 @@
 			page principale
 		-->	
 		<div data-role="page" id="game">
-
+			<!--
+				le bouton menu
+			-->
+			<div class="title" style="background: none; position: fixed; right: 0; top: 0; height: 36px; width: 36px; z-index: 999"><a id="menub"><div class="icons bars icons-size" ></div></a></div>			
 			<!--
 				Le titre
 			-->	
@@ -63,10 +66,6 @@
 			<div class="title" style="background: none; position: fixed; bottom: 15%; width: 100%; text-align: center; z-index: 300;">
 				<div id="btngo" class="button-go"><a data-theme="a" data-role="button">GO</a></div>
 			</div>
-			<!--
-				L'ancre du menu
-			-->
-			<div style="position: fixed; bottom: 0; width: 100%; height: 2px; z-index: 210;" onmouseover="$('.imenu').show()"></div>
 		</div>
 
 		<!--
@@ -153,7 +152,7 @@
 		<div data-role="page" id="aide-1" style="background: #fff; color: #000">
 			<div class="help-content">
 				<div class="help-title" style="position: fixed; top:0;">
-					drkBomb v1.0.2<br/>
+					drkBomb v1.0.3<br/>
 					<span class="help-subtitle">Passe la bombe &agrave; ton voisin</span>
 				</div>
 				<div class="help-text" style="position: static;">

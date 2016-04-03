@@ -188,6 +188,9 @@ table.highscore td {
 .help {
 	background-position: -1080px;
 } 
+.bars {
+	background-position: -864px;
+}
 .new {
 	background-position: -936px;
 } 
@@ -739,6 +742,9 @@ table.highscore td {
 	.quit {
 		background-position: -72px;
 	} 
+	.bars {
+		background-position: -436px;
+	}
 	.help {
 		background-position: -540px;
 	} 

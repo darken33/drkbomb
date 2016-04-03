@@ -1,4 +1,4 @@
-drkBomb v1.0.2
+drkBomb v1.0.3
 Passe La bombe à ton voisin
 ------------------------------------------------------------------------
 
@@ -62,6 +62,11 @@ vous béneficiez des quatre libertés fondamentales :
 
 Changelog
 ---------
+v1.0.3 : 
+  - Ajout d'un bouton menu pour les appareils ne disposant pas de bouton
+	physique.
+  - Rendre l'accellérometre plus sensible en mode difficile
+
 v1.0.2 : 
   - Le bouton "GO" ne fonctionnait pas suivant les smartphones
   - L'animation d'explosion sur la page titre entrainait des bugs dans 

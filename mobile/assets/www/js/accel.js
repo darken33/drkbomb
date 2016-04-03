@@ -1,6 +1,6 @@
 var lastX,lastY,lastZ;
 var moveCounter = 0;
-var sensitivity = 4;
+
 /**
  * updateAcceleration() - Code pour l'accelerometer
  */ 			
@@ -45,13 +45,12 @@ function startWatch() {
   var options = { frequency: 250 };  // Update acceleration every quarter second
   watchID = navigator.accelerometer.watchAcceleration(function onSuccess(acceleration) {
     var changes = {};
-//    bound = 4;  // this controls the sensitivity for detecting the shake event
     if (previousReading.x !== null) {
-      changes.x = Math.abs(previousReading.x, acceleration.x);
-      changes.y = Math.abs(previousReading.y, acceleration.y);
+      changes.x = Math.abs(acceleration.x - previousReading.x);
+      changes.y = Math.abs(acceleration.y - previousReading.y);
+      changes.z = Math.abs(acceleration.z - previousReading.z);
     }
-    if (changes.x > sensitivity && changes.y > sensitivity) {
-      // We are relying on a hidden button with an ID of shake to be present on the Profound UI Rich Display File screen
+    if (changes.x > sensitivity && changes.y > sensitivity || changes.z > sensitivity && changes.y > sensitivity || changes.z > sensitivity && changes.x > sensitivity) {
       lose();
     }
     previousReading = {
@@ -60,7 +59,7 @@ function startWatch() {
       z: acceleration.z
     }
   }, function onError() {
-    alert('Some problem has occurred in reading the accelerometer.');
+    console.log('Some problem has occurred in reading the accelerometer.');
   }, options);
 }
  
