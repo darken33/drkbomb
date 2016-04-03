@@ -89,7 +89,7 @@ body {
 	background-position: 50% 50%;
 	background-repeat:no-repeat;
 }
-#explode, #explode2 {
+#explode {
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -99,7 +99,7 @@ body {
 	background-repeat:no-repeat;
 }
 .anim {
-	background-image:url('../images/explode_anim.gif');
+	background-image:url('../images/explode_anim.png');
 }
 .ingame {
 	display: none;

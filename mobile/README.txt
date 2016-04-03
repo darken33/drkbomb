@@ -1,4 +1,4 @@
-drkBomb v1.0.1
+drkBomb v1.0.2
 Passe La bombe à ton voisin
 ------------------------------------------------------------------------
 
@@ -13,12 +13,12 @@ Ce jeu est développé et maintenu par Philippe Bousquet <darken33@free.fr>
 avec l’aide d’Emmy Carrière depuis août 2013 et est distribué selon les 
 termes de la GNU General Public License v3.
 
-Les graphismes ont été pour certains réalisé par Emmy Carrière (8 ans et 
+Les graphismes ont été pour certains réalisés par Emmy Carrière (8 ans et 
 demi) et Philippe Bousquet (plus vieux), les autres proviennent 
-d’OpenClipart.org et sont distribuées sous licence Creative Commons BY-SA.
+d’OpenClipart.org et sont distribués sous licence Creative Commons BY-SA.
 
-Les effets sonores ont quant à eux été trouvé sur SoundBible.com et sont 
-également distribuées sous licence Creative Commons BY-SA.
+Les effets sonores ont quant à eux été trouvés sur SoundBible.com et sont 
+également distribués sous licence Creative Commons BY-SA.
 
 Comment jouer ?
 ---------------
@@ -62,7 +62,16 @@ vous béneficiez des quatre libertés fondamentales :
 
 Changelog
 ---------
+v1.0.2 : 
+  - Le bouton "GO" ne fonctionnait pas suivant les smartphones
+  - L'animation d'explosion sur la page titre entrainait des bugs dans 
+    le jeu
+  - Correction de quelques bugs concernant le boutons du jeu
+  - Ajout de boutons pour les ecrans de score
+  - Correction de quelques fautes orthographiques  
+
 v1.0.1 : 
+  - L'animation d'explosion ne fonctionnait pas
   - Changement d'évènement sur le bouton GO (bug sur smartphone wikio)
   - Correction de fautes d'orthographes
   

@@ -43,9 +43,6 @@ function initGame() {
 	player2_down = false;
 	nb_games = 0;
 	start_time = 0;
-	clearExplodeAnim();
-	clearInterval(thread_anim_menu);
-	thread_anim_menu = null;
 	$(".title").hide();
 	$(".ingame").show();
 	blink_thread = setInterval(player1Blink, 1000);
@@ -121,7 +118,7 @@ function player2Down() {
 			$('#player2').removeClass('highlight');
 			$('#player2').addClass('player2_down');
 		}
-		else {
+		else if (inthegame) {
 			lose();
 		}
 	}
@@ -164,13 +161,6 @@ function player2Up() {
 }
 
 /**
- * playMenuAnim() sur la page titre jouer l'explosion toutes les 4 sec 
- */
-function playMenuAnim() {
-	thread_anim_menu = setInterval(playExplodeAnim, 4000);
-}
-
-/**
  * clearExplodeAnim() - réinitialisation de l'animation
  */ 
 function clearExplodeAnim() {
@@ -185,17 +175,6 @@ function clearExplodeAnim() {
 	$("#explode").removeClass("im03");
 	$("#explode").removeClass("im02");
 	$("#explode").removeClass("im01");
-	$("#explode2").removeClass("anim");
-	$("#explode2").removeClass("im10");
-	$("#explode2").removeClass("im09");
-	$("#explode2").removeClass("im08");
-	$("#explode2").removeClass("im07");
-	$("#explode2").removeClass("im06");
-	$("#explode2").removeClass("im05");
-	$("#explode2").removeClass("im04");
-	$("#explode2").removeClass("im03");
-	$("#explode2").removeClass("im02");
-	$("#explode2").removeClass("im01");
 }
 
 /**
@@ -204,59 +183,38 @@ function clearExplodeAnim() {
 function playExplodeAnim() {
 	$("#explode").addClass("im01");
 	$("#explode").addClass("anim");
-	$("#explode2").addClass("im01");
-	$("#explode2").addClass("anim");
 	setTimeout(function(){
 		$("#explode").addClass("im02");
 		$("#explode").removeClass("im01");
-		$("#explode2").addClass("im02");
-		$("#explode2").removeClass("im01");
 		setTimeout(function(){
 			$("#explode").addClass("im03");
 			$("#explode").removeClass("im02");
-			$("#explode2").addClass("im03");
-			$("#explode2").removeClass("im02");
 			setTimeout(function(){
 				$("#explode").addClass("im04");
 				$("#explode").removeClass("im03");
-				$("#explode2").addClass("im04");
-				$("#explode2").removeClass("im03");
 				setTimeout(function(){
 					$("#explode").addClass("im05");
 					$("#explode").removeClass("im04");
-					$("#explode2").addClass("im05");
-					$("#explode2").removeClass("im04");
 					setTimeout(function(){
 						$("#explode").addClass("im06");
 						$("#explode").removeClass("im05");
-						$("#explode2").addClass("im06");
-						$("#explode2").removeClass("im05");
 						setTimeout(function(){
 							$("#explode").addClass("im07");
 							$("#explode").removeClass("im06");
-							$("#explode2").addClass("im07");
-							$("#explode2").removeClass("im06");
 							setTimeout(function(){
 								$("#explode").addClass("im08");
 								$("#explode").removeClass("im07");
-								$("#explode2").addClass("im08");
-								$("#explode2").removeClass("im07");
 								setTimeout(function(){
 									$("#explode").addClass("im09");
 									$("#explode").removeClass("im08");
-									$("#explode2").addClass("im09");
-									$("#explode2").removeClass("im08");
 									setTimeout(function(){
 										$("#explode").addClass("im10");
 										$("#explode").removeClass("im09");
-										$("#explode2").addClass("im10");
-										$("#explode2").removeClass("im09");
 										setTimeout(function(){
 											$("#explode").removeClass("anim");
 											$("#explode").removeClass("im10");
-											$("#explode2").removeClass("anim");
-											$("#explode2").removeClass("im10");
 											if (perdu) $("#broken_screen").show();
+											setTimeout(score, 2000);
 											perdu = false;
 										}, 50);
 									}, 50);
@@ -274,22 +232,23 @@ function playExplodeAnim() {
  * score() - affiche le score obtenu
  */ 
 function score() {
-	var int_sc = nb_games * getChrono();
-	int_sc *= (game_options.difficulty == 1 ? 100 : (game_options.difficulty == 2 ? 1000 : 10000));
-	var str_sc = "Passes : " + nb_games +"<br/>";
-	str_sc += "Temps : " + getChronoString() +"<br/>";
-	$("#scr").html(int_sc);
-	$("#scr_detail").html(str_sc);
-	updateHighscore(nb_games, getChronoString(), int_sc);
-	if (game_options.sharescore) {
-		service(nb_games, getChronoString(), int_sc);
+	if (!$("score").is(':visible')) {
+		var int_sc = nb_games * getChrono();
+		int_sc *= (game_options.difficulty == 1 ? 100 : (game_options.difficulty == 2 ? 1000 : 10000));
+		var str_sc = "Passes : " + nb_games +"<br/>";
+		str_sc += "Temps : " + getChronoString() +"<br/>";
+		$("#scr").html(int_sc);
+		$("#scr_detail").html(str_sc);
+		updateHighscore(nb_games, getChronoString(), int_sc);
+		if (game_options.sharescore) {
+			service(nb_games, getChronoString(), int_sc);
+		}
+		$.mobile.changePage('#score', 'none', true, true);	
+		$(".title").show();
+		$(".ingame").hide();
+		$("#broken_screen").hide();
+		bindGame();
 	}
-	$.mobile.changePage('#score', 'none', true, true);	
-	$(".title").show();
-	$(".ingame").hide();
-	$("#broken_screen").hide();
-	bindGame();
-	playMenuAnim();
 }
 function backToTitle() {
 	inthegame = false;
@@ -298,7 +257,6 @@ function backToTitle() {
 	$("#broken_screen").hide();
 	unbindInGame();
 	bindGame();
-	playMenuAnim();
 	$.mobile.changePage('#game', 'none', true, true);	
 }
 /**
@@ -339,7 +297,6 @@ function onBackButton() {
 		}
 		else if ($('#game').css('display') != 'block') {
 			backToTitle();
-//			$.mobile.changePage('#game', 'none', true, true);
 		}
 		else {
 			quit();
@@ -539,7 +496,6 @@ var onDeviceReady = function() {
 		$.mobile.changePage('#game', 'none', true, true);
 		bindGame();	
 		bindMenu();
-		playMenuAnim();	
 		ready = true;
 		if (game_options.helponstart) {
 			popclosed = false;
