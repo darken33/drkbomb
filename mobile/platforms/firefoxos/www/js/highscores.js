@@ -93,7 +93,7 @@ function service(passes, duree, score) {
 	var passe = passes;
 	var time = duree;
 	var score = score;
-	var url = "http://darken33.free.fr/drkbomb/services/rest_service.php?key="+key+"&difficulty="+difficulty+"&name="+name+"&passe="+passe+"&time="+time+"&score="+score;
+	var url = "http://darken33.net/applications/services/drkbomb/rest_service.php?key="+key+"&difficulty="+difficulty+"&name="+name+"&passe="+passe+"&time="+time+"&score="+score;
 	$.getJSON(url, function(data) {
 		fillHighscoreIntHtml(data);
 	}).fail(function() { 

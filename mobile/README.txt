@@ -1,4 +1,4 @@
-drkBomb v1.3
+drkBomb v1.4
 Passe La bombe à ton voisin
 ------------------------------------------------------------------------
 
@@ -61,6 +61,10 @@ vous béneficiez des quatre libertés fondamentales :
 
 Changelog
 ---------
+v1.4 :
+  - Migration cordova suite à une alerte de securité
+  - Service REST migré vers http://darken33.net
+
 v1.3: 
   - Amélioration du design des boutons et boites de dialogues
   - Première version pour FirefoxOS
